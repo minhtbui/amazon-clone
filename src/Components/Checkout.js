@@ -24,15 +24,17 @@ function Checkout() {
                      : 'Your Amazon  Cart'}
                   <span className='checkout__leftTitle--price'>Price</span>
                </h2>
-               {cart.map((product) => (
-                  <CheckoutProduct
-                     id={product.id}
-                     image={product.image}
-                     title={product.title}
-                     rating={product.rating}
-                     price={product.price}
-                  />
-               ))}
+               <div className='checkout__leftProducts'>
+                  {cart.map((product) => (
+                     <CheckoutProduct
+                        id={product.id}
+                        image={product.image}
+                        title={product.title}
+                        rating={product.rating}
+                        price={product.price}
+                     />
+                  ))}
+               </div>
             </div>
          </div>
 

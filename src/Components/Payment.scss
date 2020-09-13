@@ -1,0 +1,32 @@
+.payment {
+   margin: 0 auto 0 auto;
+   width: 1500px;
+   background-color: white;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   > h1 {
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      font-weight: 400;
+      background-color: rgb(234, 237, 237);
+      border-bottom: 1px solid lightgray;
+      > a {
+         text-emphasis: none;
+      }
+   }
+   &__containerLeft {
+      flex: 0.8;
+   }
+
+   &__section {
+      display: flex;
+      padding: 20px;
+      margin: 0 20px;
+      border-bottom: 1px solid lightgray;
+   }
+   &__title {
+      margin-right: 20px;
+   }
+}
