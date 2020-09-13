@@ -1,0 +1,40 @@
+.home {
+   display: flex;
+   justify-content: center;
+   margin: 0 auto 0 auto;
+   max-width: 1500px;
+
+   .home__container {
+      width: 100%;
+      &Image {
+         z-index: -1;
+         margin: 0 0 -200px;
+         mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1),
+            rgba(0, 0, 0, 0)
+         );
+         .carousel-prev,
+         .carousel-next {
+            top: -100px;
+         }
+         .carousel-next::before {
+            height: 100px;
+            width: 100px;
+            background-image: url('https://img.icons8.com/ios-filled/100/000000/forward.png');
+         }
+         .carousel-prev::before {
+            height: 100px;
+            width: 100px;
+            background-image: url('https://img.icons8.com/ios-filled/100/000000/back.png');
+         }
+      }
+
+      &Row {
+         display: flex;
+         width: 100%;
+         z-index: 1;
+         // margin: 0 5px;
+      }
+   }
+}

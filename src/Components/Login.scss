@@ -1,0 +1,97 @@
+.login {
+   background-color: white;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   &__logo {
+      margin: 20px auto;
+      object-fit: contain;
+      width: 100px;
+   }
+
+   &__container {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: fit-content;
+      border-radius: 5px;
+      border: 1px solid lightgray;
+      padding: 25px;
+
+      > h1 {
+         font-weight: 500;
+         margin: 0 0 20px;
+      }
+
+      .login__form {
+         > h5 {
+            margin: 0 0 5px;
+         }
+         &Input {
+            height: 30px;
+            margin: 0 0 10px;
+            background-color: white;
+            width: 98%;
+         }
+         &SigninBtn {
+            background: #f0c14b;
+            border-radius: 2px;
+            border: 1px solid;
+            margin-top: 10px;
+            border-color: #a88734 #9c7e31 #846a29;
+            color: #111;
+            height: 30px;
+            width: 100%;
+         }
+      }
+
+      .login__policy {
+         margin: 15px 0;
+         font-size: 12px;
+      }
+   }
+
+   &__breakLine {
+      width: 350px;
+      text-align: center;
+      position: relative;
+      top: 2px;
+      padding-top: 1px;
+      margin: 20px 0 14px;
+      line-height: 0;
+      > h5 {
+         line-height: 1;
+         font-size: 12px;
+         color: #767676;
+         font-weight: 400;
+         z-index: 2;
+         position: relative;
+         display: inline-block;
+         background-color: #fff;
+         padding: 0 8px 0 7px;
+      }
+      &::after {
+         content: '';
+         width: 100%;
+         background-color: transparent;
+         display: block;
+         height: 1px;
+         border-top: 1px solid #e7e7e7;
+         position: absolute;
+         top: 50%;
+         margin-top: -1px;
+         z-index: 1;
+      }
+   }
+
+   &__signupBtn {
+      border-radius: 3px;
+      width: 350px;
+      height: 30px;
+      border: 1px solid darkgray;
+      margin: 10px 0 0;
+      background: #e7e9ec;
+      background-color: #adb1b8 #a2a6ac #8d9096;
+   }
+}
