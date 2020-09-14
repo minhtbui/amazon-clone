@@ -1,5 +1,5 @@
 .payment {
-   margin: 0 5%;
+   margin: 0 5% 5%;
    background-color: white;
    display: flex;
    flex-direction: row;
@@ -36,10 +36,35 @@
    &__methods {
       flex: 0.8;
    }
+   &__methods > form {
+      max-width: 400px;
+   }
 
    &__containerRight {
       display: flex;
       flex-direction: column;
       flex: 0.3;
+      text-align: center;
+      align-items: center;
+      border-left: 1px solid lightgray;
+   }
+   &__totalItems {
+      margin: 20px;
+      > a {
+         text-decoration: none;
+      }
+   }
+   &__priceContainer {
+      margin: 20px;
+   }
+   &__buyBtn {
+      margin: 20px;
+      background: #f0c14b;
+      width: 50%;
+      height: 30px;
+      border-radius: 2px;
+      border: 1px solid;
+      border-color: #a88734 #9c7e31 #846a29;
+      color: #111;
    }
 }

@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import Product from './Product';
 import Slider from 'infinite-react-carousel';
 import { img, settings } from '../BannerImages';
+import { productAPI } from '../axios';
 
 function Home() {
+   const [products, setProducts] = useState([]);
+
+   useEffect(() => {
+      async function fetchData() {
+         await productAPI
+            .get('?sort=desc')
+            .then((response) => {
+               setProducts(response.data);
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+      }
+      fetchData();
+   }, [productAPI]);
+
+   let randRating = () => Math.floor(Math.random() * 5) + 1;
+
    return (
       <div className='home'>
          <div className='home__container'>
@@ -15,59 +34,54 @@ function Home() {
             </Slider>
 
             <div className='home__containerRow'>
-               <Product
-                  id={1}
-                  title='Think Like A King'
-                  price={19.99}
-                  rating={5}
-                  image='https://images-eu.ssl-images-amazon.com/images/I/81Dtutw94gL._AC_UL480_SR312,480_.jpg'
-               />
-               <Product
-                  id={2}
-                  title='Think Like A King'
-                  price={15.99}
-                  rating={4}
-                  image='https://images-eu.ssl-images-amazon.com/images/I/81Dtutw94gL._AC_UL480_SR312,480_.jpg'
-               />
+               {products
+                  .filter((e) => e.category === 'electronics')
+                  .map(
+                     (product, index) =>
+                        index < 3 && (
+                           <Product
+                              id={product.id}
+                              title={product.title}
+                              price={product.price}
+                              rating={randRating()}
+                              image={product.image}
+                           />
+                        ),
+                  )}
             </div>
+
             <div className='home__containerRow'>
-               <Product
-                  id={3}
-                  title='Think Like A King'
-                  price={10.99}
-                  rating={3}
-                  image='https://images-eu.ssl-images-amazon.com/images/I/81Dtutw94gL._AC_UL480_SR312,480_.jpg'
-               />
-               <Product
-                  id={4}
-                  title='Think Like A King'
-                  price={5.99}
-                  rating={2}
-                  image='https://images-eu.ssl-images-amazon.com/images/I/81Dtutw94gL._AC_UL480_SR312,480_.jpg'
-               />
-               <Product
-                  id={5}
-                  title='Think Like A King'
-                  price={1.99}
-                  rating={1}
-                  image='https://images-eu.ssl-images-amazon.com/images/I/81Dtutw94gL._AC_UL480_SR312,480_.jpg'
-               />
+               {products
+                  .filter((e) => e.category === 'jewelery')
+                  .map(
+                     (product, index) =>
+                        index < 2 && (
+                           <Product
+                              id={product.id}
+                              title={product.title}
+                              price={product.price}
+                              rating={randRating()}
+                              image={product.image}
+                           />
+                        ),
+                  )}
             </div>
+
             <div className='home__containerRow'>
-               <Product
-                  id={6}
-                  title='Think Like A King'
-                  price={5}
-                  rating={5}
-                  image='https://images-eu.ssl-images-amazon.com/images/I/81Dtutw94gL._AC_UL480_SR312,480_.jpg'
-               />
-               <Product
-                  id={7}
-                  title='Think Like A King'
-                  price={10}
-                  rating={5}
-                  image='https://images-eu.ssl-images-amazon.com/images/I/81Dtutw94gL._AC_UL480_SR312,480_.jpg'
-               />
+               {products
+                  .filter((e) => e.category === 'women clothing')
+                  .map(
+                     (product, index) =>
+                        index < 3 && (
+                           <Product
+                              id={product.id}
+                              title={product.title}
+                              price={product.price}
+                              rating={randRating()}
+                              image={product.image}
+                           />
+                        ),
+                  )}
             </div>
          </div>
       </div>

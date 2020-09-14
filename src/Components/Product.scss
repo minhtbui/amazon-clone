@@ -12,16 +12,19 @@
 
    background-color: white;
    z-index: 1;
-
    &__info {
+      width: 80%;
       height: 100px;
       margin: 0 0 15px;
 
       &Price {
          margin: 5px 0 0;
+         float: right;
       }
 
       &Rating {
+         margin: 5px 0 0;
+         float: left;
          display: flex;
       }
    }

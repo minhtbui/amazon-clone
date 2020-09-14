@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 function Subtotal() {
    const history = useHistory();
-   const [{ cart }, dispatch] = useStateValue();
+   const [{ cart, user }, dispatch] = useStateValue();
 
    return (
       <div className='subtotal'>
@@ -32,11 +32,17 @@ function Subtotal() {
                prefix={'$'}
             />
          }
-         <button
-            className='subtotal__checkout'
-            onClick={() => history.push('/payment')}>
-            Proceed to checkout
-         </button>
+         {cart.length > 0 && (
+            <button
+               className='subtotal__checkout'
+               onClick={
+                  user
+                     ? () => history.push('/payment')
+                     : () => history.push('/login')
+               }>
+               Proceed to checkout
+            </button>
+         )}
       </div>
    );
 }

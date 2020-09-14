@@ -53,7 +53,7 @@ function Header() {
                </div>
             </Link>
 
-            <Link to='/' className='header__navLink'>
+            <Link to='/orders' className='header__navLink'>
                <div className='header__navOption'>
                   <span className='header__navOption--lineOne'>Returns</span>
                   <span className='header__navOption--lineTwo'>& Orders</span>

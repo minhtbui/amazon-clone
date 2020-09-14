@@ -9,6 +9,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getTotalCart } from '../ContextAPI/reducer';
 import axios from '../axios';
+import { db } from '../firebase';
 
 function Payment() {
    const history = useHistory();
@@ -42,7 +43,7 @@ function Payment() {
       setProcessing(true);
 
       //! send clientSecret to Stripe for confirm Card
-      const payload = await stripe
+      await stripe
          .confirmCardPayment(clientSecret, {
             payment_method: {
                card: elements.getElement(CardElement),
@@ -50,6 +51,16 @@ function Payment() {
          })
          .then(({ paymentIntent }) => {
             //! paymentIntent = payment confirmation
+            db.collection('users')
+               .doc(user?.uid)
+               .collection('orders')
+               .doc(paymentIntent?.id)
+               .set({
+                  cart: cart,
+                  amount: paymentIntent.amount,
+                  created: paymentIntent.created,
+               });
+
             setSucceeded(true);
             setError(null);
             setProcessing(false);
@@ -103,24 +114,8 @@ function Payment() {
                </div>
                <div className='payment__methods'>
                   {/*//! Stripe action here */}
-                  <form onSubmit={handleSubmit}>
+                  <form id='form' onSubmit={handleSubmit}>
                      <CardElement onChange={handleChange} />
-
-                     <div className='payment_priceContainer'>
-                        <CurrencyFormat
-                           renderText={(value) => <h4>Order Total: {value}</h4>}
-                           decimalScale={2}
-                           value={getTotalCart(cart)}
-                           displayType={'text'}
-                           thousandSeparator={true}
-                           prefix={'$'}
-                        />
-                        <button disabled={processing || disabled || succeeded}>
-                           <span>
-                              {processing ? <p>Processing</p> : 'Buy Now'}
-                           </span>
-                        </button>
-                     </div>
 
                      {error && <div>{error}</div>}
                   </form>
@@ -129,9 +124,27 @@ function Payment() {
          </div>
 
          <div className='payment__containerRight'>
-            <h3>
+            <h3 className='payment__totalItems'>
                Items: (<Link to='/checkout'>{cart.length} items</Link>)
             </h3>
+
+            <div className='payment__priceContainer'>
+               <CurrencyFormat
+                  renderText={(value) => <h4>Order Total: {value}</h4>}
+                  decimalScale={2}
+                  value={getTotalCart(cart)}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={'$'}
+               />
+            </div>
+
+            <button
+               className='payment__buyBtn'
+               form='form'
+               disabled={processing || disabled || succeeded}>
+               <span>{processing ? <p>Processing</p> : 'Buy Now'}</span>
+            </button>
          </div>
       </div>
    );

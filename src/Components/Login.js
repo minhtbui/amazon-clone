@@ -7,7 +7,6 @@ function Login() {
    const history = useHistory(); // automatically change the URL
    const [email, setEmail] = useState('');
    const [pw, setPw] = useState('');
-   console.log(email + pw);
 
    const signIn = (e) => {
       e.preventDefault();

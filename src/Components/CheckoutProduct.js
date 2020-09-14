@@ -2,7 +2,7 @@ import React from 'react';
 import './CheckoutProduct.scss';
 import { useStateValue } from '../ContextAPI/StateProvider';
 
-function CheckoutProduct({ id, image, title, rating, price }) {
+function CheckoutProduct({ id, image, title, rating, price, hideBtn }) {
    const [{ cart }, dispatch] = useStateValue();
 
    const removeProduct = () => {
@@ -26,11 +26,13 @@ function CheckoutProduct({ id, image, title, rating, price }) {
                   ))}
             </div>
 
-            <button
-               className='checkoutItem__infoRemoveBtn'
-               onClick={removeProduct}>
-               Remove
-            </button>
+            {!hideBtn && (
+               <button
+                  className='checkoutItem__infoRemoveBtn'
+                  onClick={removeProduct}>
+                  Remove
+               </button>
+            )}
          </div>
          <div className='checkoutItem_right'>
             <p className='checkoutItem__price'>
