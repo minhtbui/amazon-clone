@@ -1,6 +1,5 @@
 .payment {
-   margin: 0 auto 0 auto;
-   width: 1500px;
+   margin: 0 5%;
    background-color: white;
    display: flex;
    flex-direction: row;
@@ -27,6 +26,20 @@
       border-bottom: 1px solid lightgray;
    }
    &__title {
-      margin-right: 20px;
+      flex: 0.2;
+   }
+   // &__address {
+   //    margin-left: 20px;
+   // }
+   &__address,
+   &__items,
+   &__methods {
+      flex: 0.8;
+   }
+
+   &__containerRight {
+      display: flex;
+      flex-direction: column;
+      flex: 0.3;
    }
 }

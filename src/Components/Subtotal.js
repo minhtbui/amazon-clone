@@ -2,7 +2,7 @@ import React from 'react';
 import './Subtotal.scss';
 import CurrencyFormat from 'react-currency-format';
 import { useStateValue } from '../ContextAPI/StateProvider';
-import { getTotal } from '../ContextAPI/reducer';
+import { getTotalCart } from '../ContextAPI/reducer';
 import { useHistory } from 'react-router-dom';
 
 function Subtotal() {
@@ -26,7 +26,7 @@ function Subtotal() {
                   </>
                )}
                decimalScale={2}
-               value={getTotal(cart)}
+               value={getTotalCart(cart)}
                displayType={'text'}
                thousandSeparator={true}
                prefix={'$'}

@@ -3,7 +3,7 @@ export const initialState = {
    user: null,
 };
 
-export const getTotal = (cart) =>
+export const getTotalCart = (cart) =>
    cart?.reduce((total, cur) => total + cur.price, 0);
 
 const reducer = (state, action) => {
@@ -26,6 +26,11 @@ const reducer = (state, action) => {
          return {
             ...state,
             cart: newCart,
+         };
+      case 'EMPTY_CART':
+         return {
+            ...state,
+            cart: [],
          };
 
       case 'SET_USER':
