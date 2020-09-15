@@ -20,7 +20,7 @@ function Home() {
             });
       }
       fetchData();
-   }, [productAPI]);
+   }, []);
 
    let randRating = () => Math.floor(Math.random() * 5) + 1;
 

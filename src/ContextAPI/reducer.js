@@ -1,6 +1,7 @@
 export const initialState = {
    cart: [],
    user: null,
+   theme: 'light',
 };
 
 export const getTotalCart = (cart) =>
@@ -8,6 +9,12 @@ export const getTotalCart = (cart) =>
 
 const reducer = (state, action) => {
    switch (action.type) {
+      case 'SET_MODE':
+         return {
+            ...state,
+            theme: action.theme,
+         };
+
       case 'ADD_TO_CART':
          return {
             ...state,

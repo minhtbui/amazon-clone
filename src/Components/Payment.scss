@@ -9,7 +9,6 @@
       text-align: center;
       padding: 10px;
       font-weight: 400;
-      background-color: rgb(234, 237, 237);
       border-bottom: 1px solid lightgray;
       > a {
          text-emphasis: none;
@@ -52,6 +51,7 @@
       margin: 20px;
       > a {
          text-decoration: none;
+         color: lightsalmon;
       }
    }
    &__priceContainer {

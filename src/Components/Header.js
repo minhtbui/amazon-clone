@@ -5,8 +5,9 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../ContextAPI/StateProvider';
 import { auth } from '../firebase';
+import Toggler from '../DarkMode/Toggler';
 
-function Header() {
+function Header({ theme, toggleTheme }) {
    const history = useHistory(); // automatically change the URL
    const [{ cart, user }, dispatch] = useStateValue();
 
@@ -44,6 +45,12 @@ function Header() {
          </div>
 
          <div className='header__nav'>
+            <Toggler
+               className='header__navToggle'
+               theme={theme}
+               toggleTheme={toggleTheme}
+            />
+
             <Link to={!user && '/login'} className='header__navLink'>
                <div className='header__navOption' onClick={handleSignOut}>
                   <span className='header__navOption--lineOne'>

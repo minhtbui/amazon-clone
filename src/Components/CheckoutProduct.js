@@ -34,7 +34,7 @@ function CheckoutProduct({ id, image, title, rating, price, hideBtn }) {
                </button>
             )}
          </div>
-         <div className='checkoutItem_right'>
+         <div className='checkoutItem__rightContainer'>
             <p className='checkoutItem__price'>
                <small>$</small>
                <strong>{price}</strong>

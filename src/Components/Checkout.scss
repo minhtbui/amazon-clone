@@ -1,10 +1,10 @@
 .checkout {
    display: flex;
-   padding: 20px;
-   background-color: white;
+   margin: 0 5%;
    height: max-content;
    margin-bottom: 5%;
    &__left {
+      margin: 0 20px;
       &Banner > img {
          width: 100%;
          margin: 0 0 10px;
@@ -27,6 +27,8 @@
       }
    }
    &__right {
+      margin: 0 20px;
+
       display: flex;
       width: 300px;
    }
