@@ -22,7 +22,7 @@ const promise = loadStripe(
 );
 
 function App() {
-   const [{ products }, dispatch] = useStateValue();
+   const [{}, dispatch] = useStateValue();
    const [theme, themeToggler] = useDarkMode();
    const [mountedComponent, setMountedComponent] = useState(false);
 
@@ -53,10 +53,10 @@ function App() {
          setMountedComponent(true);
       });
       return () => {};
-   }, [mountedComponent, products, dispatch]);
+   }, [mountedComponent, dispatch]);
 
    return (
-      mountedComponent === true && (
+      mountedComponent && (
          <ThemeProvider theme={themeMode}>
             <>
                <GlobalStyles />

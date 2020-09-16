@@ -7,32 +7,37 @@ function Product({ id, title, price, rating, image }) {
    const [{ cart }, dispatch] = useStateValue();
 
    const addToCart = () => {
-      dispatch({
-         type: 'ADD_TO_CART',
-         item: {
-            id: id,
-            title: title,
-            image: image,
-            price: price,
-            rating: rating,
-         },
-      });
+      if (id) {
+         dispatch({
+            type: 'ADD_TO_CART',
+            item: {
+               id: id,
+               title: title,
+               image: image,
+               price: price,
+               rating: rating,
+               qty: 1,
+            },
+         });
+      }
    };
    return (
       <div className='product'>
          <div className='product__info'>
             <h4 className='product__infoTitle'>{title}</h4>
-            <p className='product__infoPrice'>
-               <small>$</small>
-               <strong>{price}</strong>
-            </p>
+
             <div className='product__infoRating'>
                {Array(rating)
                   .fill()
                   .map((_, i) => (
-                     <p>💩</p>
+                     <span key={i}>💩</span>
                   ))}
             </div>
+
+            <p className='product__infoPrice'>
+               <small>$</small>
+               <strong>{price}</strong>
+            </p>
          </div>
 
          <div className='product__image'>

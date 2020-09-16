@@ -13,4 +13,8 @@
       text-align: right;
       font-weight: 500;
    }
+   > .checkoutItem > .checkoutItem__rightContainer {
+      display: flex;
+      justify-content: flex-end;
+   }
 }

@@ -1,20 +1,8 @@
 import React from 'react';
 import { func, string } from 'prop-types';
-import styled from 'styled-components';
 import Switch from 'react-switch';
 import Brightness6OutlinedIcon from '@material-ui/icons/Brightness6Outlined';
 import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined';
-
-const Button = styled.button`
-    {
-      background: ${({ theme }) => theme.body};
-      border: 2px solid ${({ theme }) => theme.toggleBorder};
-      border-radius: 30px;
-      cursor: point;
-      font-size: 0.8rem;
-      padding: 0.6ren;
-   }
-`;
 
 function Toggler({ theme, toggleTheme }) {
    return (

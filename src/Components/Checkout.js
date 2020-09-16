@@ -25,13 +25,15 @@ function Checkout() {
                   <span className='checkout__leftTitle--price'>Price</span>
                </h2>
                <div className='checkout__leftProducts'>
-                  {cart.map((product) => (
+                  {cart.map((product, i) => (
                      <CheckoutProduct
+                        key={i}
                         id={product.id}
                         image={product.image}
                         title={product.title}
                         rating={product.rating}
                         price={product.price}
+                        qty={product.qty}
                      />
                   ))}
                </div>

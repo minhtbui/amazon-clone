@@ -4,6 +4,7 @@ export const lightTheme = {
    text: '#363537',
    toggleBorder: '#FFF',
    background: '#363537',
+   backgroundImage: 'url(http://pngimg.com/uploads/amazon/amazon_PNG1.png)',
 };
 
 export const darkTheme = {
@@ -12,4 +13,5 @@ export const darkTheme = {
    text: '#FAFAFA',
    toggleBorder: '#688096',
    background: '#999',
+   backgroundImage: 'url(http://pngimg.com/uploads/amazon/amazon_PNG25.png)',
 };

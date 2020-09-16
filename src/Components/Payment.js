@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import CheckoutProduct from './CheckoutProduct';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
-import { getTotalCart } from '../ContextAPI/reducer';
+import { getItemsCart, getSubTotalCart } from '../ContextAPI/reducer';
 import axios from '../axios';
 import { db } from '../firebase';
 
@@ -30,7 +30,9 @@ function Payment() {
          const response = await axios({
             method: 'post',
             //! Stripe expects the total in a currencies subunits
-            url: `/payments/create?total=${parseInt(getTotalCart(cart) * 100)}`,
+            url: `/payments/create?total=${parseInt(
+               getSubTotalCart(cart) * 100,
+            )}`,
          });
          setClientSecret(response.data.clientSecret);
       };
@@ -97,13 +99,15 @@ function Payment() {
                   <h3>Review Items</h3>
                </div>
                <div className='payment__items'>
-                  {cart.map((product) => (
+                  {cart.map((product, i) => (
                      <CheckoutProduct
+                        key={i}
                         id={product.id}
                         image={product.image}
                         title={product.title}
                         rating={product.rating}
                         price={product.price}
+                        qty={product.qty}
                      />
                   ))}
                </div>
@@ -125,14 +129,14 @@ function Payment() {
 
          <div className='payment__containerRight'>
             <h3 className='payment__totalItems'>
-               Items: (<Link to='/checkout'>{cart.length} items</Link>)
+               Items: (<Link to='/checkout'>{getItemsCart(cart)} items</Link>)
             </h3>
 
             <div className='payment__priceContainer'>
                <CurrencyFormat
                   renderText={(value) => <h4>Order Total: {value}</h4>}
                   decimalScale={2}
-                  value={getTotalCart(cart)}
+                  value={getSubTotalCart(cart)}
                   displayType={'text'}
                   thousandSeparator={true}
                   prefix={'$'}

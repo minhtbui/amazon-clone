@@ -9,9 +9,15 @@ body {
 }
 .product, .checkout, .subtotal, .payment, .order {
     background-color: ${({ theme }) => theme.div};
+    transition: all 0.5s linear;
+
 }
 .login  {
+
     &__logo{
+        transition: all 0.5s linear;
+
+        background-image: ${({ theme }) => theme.backgroundImage};
     }
     &__container{
         background: ${({ theme }) => theme.div};

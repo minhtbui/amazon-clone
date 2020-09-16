@@ -3,22 +3,22 @@
    flex-direction: row;
    margin: 20px 0;
    padding-bottom: 20px;
+
    &__image {
       position: relative;
 
       object-fit: contain;
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
    }
 
    &__info {
-      flex: 1;
-
-      padding: 0 20px 0;
+      flex: 0.7;
+      margin: 0 20px 0;
 
       &Title {
-         font-size: 17px;
-         font-weight: 800;
+         font-weight: 500;
+         font-size: 100%;
       }
       &Rating {
          display: flex;
@@ -28,13 +28,45 @@
          background: #f0c14b;
          border-radius: 2px;
          border: 1px solid;
-         margin-top: 10px;
+         margin-top: 3em;
          border-color: #a88734 #9c7e31 #846a29;
          color: #111;
       }
    }
 
    &__rightContainer {
-      margin-right: 20px;
+      display: flex;
+      flex: 0.3;
+      align-items: center;
+   }
+   &__qty {
+      display: flex;
+      flex: 0.5;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      > span {
+         size: 2em;
+         margin: 0 15px;
+         text-align: center;
+         outline: none;
+         border: none;
+      }
+      .MuiSvgIcon-root {
+         cursor: pointer;
+         font-size: 2em;
+         transition: all 0.3s;
+         &:hover {
+            transition: all 0.3s;
+            transform: scale(1.2);
+         }
+      }
+   }
+   &__price {
+      justify-content: flex-end;
+
+      display: flex;
+      flex: 0.5;
+      margin-right: 10px;
    }
 }

@@ -10,27 +10,30 @@
    max-height: 400px;
    min-width: 100px;
    transition: all 1s linear;
+   border-radius: 10%;
 
    // background-color: white;
    z-index: 1;
    &__info {
-      width: 80%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
       height: 100px;
       margin: 0 0 15px;
-
+      text-align: center;
+      justify-content: center;
       &Price {
          margin: 5px 0 0;
-         float: right;
       }
 
       &Rating {
          margin: 5px 0 0;
-         float: left;
          display: flex;
+         justify-content: center;
       }
    }
    &__image > img {
-      max-height: 200px;
+      max-height: 150px;
       width: 100%;
       object-fit: contain;
       margin: 0 0 15px;

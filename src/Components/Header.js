@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../ContextAPI/StateProvider';
 import { auth } from '../firebase';
 import Toggler from '../DarkMode/Toggler';
+import { getItemsCart } from '../ContextAPI/reducer';
 
 function Header({ theme, toggleTheme }) {
    const history = useHistory(); // automatically change the URL
@@ -14,11 +15,7 @@ function Header({ theme, toggleTheme }) {
    const handleSignOut = () => {
       auth
          .signOut()
-         .then((auth) => {
-            if (!auth) {
-               history.push('/login');
-            }
-         })
+
          .catch((error) => alert(error.message));
    };
 
@@ -51,7 +48,7 @@ function Header({ theme, toggleTheme }) {
                toggleTheme={toggleTheme}
             />
 
-            <Link to={!user && '/login'} className='header__navLink'>
+            <Link to={!user ? '/login' : ''} className='header__navLink'>
                <div className='header__navOption' onClick={handleSignOut}>
                   <span className='header__navOption--lineOne'>
                      Hello, {user ? userName(user?.email) : 'guest'}
@@ -78,7 +75,7 @@ function Header({ theme, toggleTheme }) {
                <div className='header__navCart'>
                   <ShoppingCartOutlinedIcon />
                   <span className='header__navCart--cartCount'>
-                     {cart?.length}
+                     {getItemsCart(cart)}
                   </span>
                </div>
             </Link>

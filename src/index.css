@@ -1,5 +1,6 @@
 * {
    margin: 0;
+   transition: opacity 1s linear;
 }
 button {
    cursor: pointer;
@@ -12,6 +13,23 @@ body {
       'Helvetica Neue', sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
+}
+.header,
+.home,
+.checkout,
+.login,
+.product,
+.payment,
+.orders {
+   animation: fade 0.5s;
+}
+@keyframes fade {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
 }
 
 code {

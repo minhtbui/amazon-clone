@@ -1,49 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Home.scss';
 import Product from './Product';
 import Slider from 'infinite-react-carousel';
 import { img, settings } from '../BannerImages';
-import { productAPI } from '../axios';
+import Products from './Products';
 
 function Home() {
-   const [products, setProducts] = useState([]);
-
-   useEffect(() => {
-      async function fetchData() {
-         await productAPI
-            .get('?sort=desc')
-            .then((response) => {
-               setProducts(response.data);
-            })
-            .catch((error) => {
-               console.log(error);
-            });
-      }
-      fetchData();
-   }, []);
-
-   let randRating = () => Math.floor(Math.random() * 5) + 1;
+   const [data] = Products();
 
    return (
       <div className='home'>
          <div className='home__container'>
             <Slider className='home__containerImage' {...settings}>
-               {img.map((i) => (
-                  <img src={i} alt='' />
+               {img.map((e, i) => (
+                  <img key={i} src={e} alt='' />
                ))}
             </Slider>
 
             <div className='home__containerRow'>
-               {products
+               {data
                   .filter((e) => e.category === 'electronics')
                   .map(
                      (product, index) =>
                         index < 3 && (
                            <Product
+                              key={product.id}
                               id={product.id}
                               title={product.title}
                               price={product.price}
-                              rating={randRating()}
+                              rating={4}
                               image={product.image}
                            />
                         ),
@@ -51,16 +36,17 @@ function Home() {
             </div>
 
             <div className='home__containerRow'>
-               {products
+               {data
                   .filter((e) => e.category === 'jewelery')
                   .map(
                      (product, index) =>
                         index < 2 && (
                            <Product
+                              key={product.id}
                               id={product.id}
                               title={product.title}
                               price={product.price}
-                              rating={randRating()}
+                              rating={3}
                               image={product.image}
                            />
                         ),
@@ -68,16 +54,17 @@ function Home() {
             </div>
 
             <div className='home__containerRow'>
-               {products
+               {data
                   .filter((e) => e.category === 'women clothing')
                   .map(
                      (product, index) =>
                         index < 3 && (
                            <Product
+                              key={product.id}
                               id={product.id}
                               title={product.title}
                               price={product.price}
-                              rating={randRating()}
+                              rating={5}
                               image={product.image}
                            />
                         ),
