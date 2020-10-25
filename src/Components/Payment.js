@@ -123,6 +123,13 @@ function Payment() {
 
                      {error && <div>{error}</div>}
                   </form>
+
+                  <div className='payment__annotation'>
+                     <span className='payment__annotationMark'></span>
+                     <span className='payment__annotationBox'>
+                        Type: 4242424242424242 for card number to test
+                     </span>
+                  </div>
                </div>
             </div>
          </div>

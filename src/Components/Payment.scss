@@ -1,3 +1,5 @@
+@import '../animation';
+
 .payment {
    margin: 0 5% 5%;
    background-color: white;
@@ -35,8 +37,59 @@
    &__methods {
       flex: 0.8;
    }
-   &__methods > form {
-      max-width: 400px;
+   &__methods {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      > form {
+         width: 100%;
+         max-width: 400px;
+         margin-right: 1rem;
+      }
+      .payment__annotation {
+         display: flex;
+         &Mark {
+            width: 20px;
+            height: 20px;
+            margin-right: 1rem;
+            text-align: center;
+            border: 1px solid;
+            border-radius: 100%;
+            outline: none;
+            font-weight: 800;
+            user-select: none;
+            opacity: 0.5;
+            &::before {
+               content: '?';
+            }
+            &:hover {
+               animation: shaker 1s ease-out;
+               opacity: 0.8;
+               &::before {
+                  content: '';
+               }
+               &::after {
+                  content: '!';
+                  color: #f0c14b;
+               }
+            }
+         }
+
+         &Box {
+            display: none;
+            position: absolute;
+            width: max-content;
+            margin-left: 2rem;
+            padding: 4px;
+            font-size: 12px;
+         }
+         &:hover .payment__annotationBox {
+            display: flex;
+            animation: fade-in-left 3s cubic-bezier(0.645, 0.045, 0.355, 1)
+               alternate;
+            opacity: 0.8;
+         }
+      }
    }
 
    &__containerRight {

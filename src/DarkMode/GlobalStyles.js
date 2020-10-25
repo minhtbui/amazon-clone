@@ -16,7 +16,6 @@ body {
 
     &__logo{
         transition: all 0.5s linear;
-
         background-image: ${({ theme }) => theme.backgroundImage};
     }
     &__container{
